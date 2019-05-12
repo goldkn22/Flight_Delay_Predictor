@@ -1,0 +1,20 @@
+<form action="" method="post">
+
+    {% csrf_token %}
+    <div class="fieldWrapper">
+        <label for="id_message">Airline:</label>
+        {{ form.airline }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_message">Flight Number:</label>
+        {{ form.flight_number }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_message">Date:</label>
+        {{ form.date }}
+    </div>
+
+
+    <input type="submit" value="Submit">
+
+</form>
