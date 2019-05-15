@@ -12,6 +12,6 @@ urlpatterns = [
 #    path('', views.home, name='home'),
     path('', views.index, name='index'),
 #    path('', views.get_name, name='get_name'),
-    path('travelr',views.get_travelr),
+#    path('travelr',views.get_travelr),
 
 ]

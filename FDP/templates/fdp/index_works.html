@@ -1,0 +1,29 @@
+{% extends 'fdp/base.html' %}
+
+{% block content %}
+
+<form action="" method="post">
+    <label for="airline_name">Enter name: </label>
+    <input id="airline_name" type="text" name="airline_name" value="Airline">
+<br>
+    <label for="flight_number">Enter Flight Number: </label>
+    <input id="flight_number" type="text" name="flight_number" value="Flight Number">
+<br>
+    <label for="flight_date">Date </label>
+    <input id="flight_date" type="text" name="flight_date" value="Flight Date">
+<br>
+    <label for="flight_time">Date </label>
+    <input id="flight_time" type="text" name="flight_time" value="Flight Time">
+<br>
+    <input type="submit" value="Predict!">
+</form>
+
+
+<!--
+  <h2>GEO API</h2>
+  <p>Your ip address is <strong>{{ ip }}</strong>, and you are probably in <strong>{{ country }}</strong> right now.</p>
+-->
+
+
+
+{% endblock %}

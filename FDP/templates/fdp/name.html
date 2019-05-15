@@ -10,10 +10,17 @@
         {{ form.flight_number }}
     </div>
     <div class="fieldWrapper">
-        <label for="id_message">Date:</label>
-        {{ form.date }}
+        <label for="id_message">Year:</label>
+        {{ form.date_year }}
     </div>
-
+    <div class="fieldWrapper">
+        <label for="id_message">Month:</label>
+        {{ form.date_month }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_message">Day:</label>
+        {{ form.date_day }}
+    </div>
 
     <input type="submit" value="Submit">
 
