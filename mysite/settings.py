@@ -25,7 +25,7 @@ SECRET_KEY = '_#(etlv0i1h$ckp0emzb=nw9pjq)og)8lmz(tke=ep3l%t^lll'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [flightdelaypredictor.herokuapp.com]
 
 
 # Application definition
