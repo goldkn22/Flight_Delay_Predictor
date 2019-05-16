@@ -25,7 +25,7 @@ SECRET_KEY = '_#(etlv0i1h$ckp0emzb=nw9pjq)og)8lmz(tke=ep3l%t^lll'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [flightdelaypredictor.herokuapp.com]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -120,5 +120,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com',flightdelaypredictor.herokuapp.com]
 
