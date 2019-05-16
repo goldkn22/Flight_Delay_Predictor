@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Flight Delay Predictor Results</title>
+
+
+	{% load static %}
+
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+
+
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<t1> Flight Delay Predictor Results</t1>
+					<div class="booking-form">
+
+
+						<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Airline Name</span>
+										<t1>{{ airline }}</t1>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Flight Number</span>
+										<t1>{{ flightNumber }}</t1>
+									</div>
+								</div>
+							</div>
+
+						<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Departure Airport</span>
+										<t1>{{ departureAirport }}</t1>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Departure Weather</span>
+										<t1>{{ departure_prevailing_condition }}</t1>
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Arrival Airport</span>
+										<t1>{{ arrivalAirport }}</t1>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Arrival Weather</span>
+										<t1>{{ arrival_prevailing_condition }}</t1>
+									</div>
+								</div>
+							</div>
+
+						<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Departure Score</span>
+										<t1>{{ departureScore }}</t1>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Arrival Score</span>
+										<t1>{{ arrivalScore }}</t1>
+									</div>
+								</div>
+							</div>
+
+{% block content %}
+
+
+
+	<t1>  Your total delay score is <strong>{{ totalScore }}</strong><br>
+						Your flight has a {{delay}} chance of being delayed!!</t1>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>

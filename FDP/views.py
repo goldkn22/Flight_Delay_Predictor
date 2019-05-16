@@ -77,8 +77,9 @@ def index(request):
             response = requests.get(api_request_wx_dep)
             departure_wx = response.json()
             departure_instrumentation_condition = departure_wx['metar']['tags'][0]['value']
-            deprature_prevailing_condition = departure_wx['metar']['tags'][1]['value']
-
+            departure_prevailing_condition = departure_wx['metar']['tags'][1]['value']
+            #initialize departure score
+            departure_score = 0
             #Calculate a departure "score" based on flight status  "S" stands for scheduled, all others are flight delayed
             if departure_staus == "S":
                 departure_score = 15
@@ -92,11 +93,11 @@ def index(request):
                 departure_score += 5
 
             #Add to departure score based on the weather at the departure airport prevailing conditions
-            if departure_instrumentation_condition == ("Hurricane" or "Tornado" or "Volcanic Ash"):
+            if departure_prevailing_condition == ("Hurricane" or "Tornado" or "Volcanic Ash"):
                 departure_score += 50
-            elif departure_instrumentation_condition == ("Ice" or "Thunderstorms" or "Snow" or "Fog" or "Smoke"):
+            elif departure_prevailing_condition == ("Ice" or "Thunderstorms" or "Snow" or "Fog" or "Smoke"):
                 departure_score += 30
-            elif departure_instrumentation_condition == ("Patchy Fog" or "Windy" or "Breezy" or "Rain" or "Showers"):
+            elif departure_prevailing_condition == ("Patchy Fog" or "Windy" or "Breezy" or "Rain" or "Showers"):
                 departure_score += 10
             else:
                 departure_score += 0
@@ -112,43 +113,49 @@ def index(request):
             arrival_instrumentation_condition = departure_wx['metar']['tags'][0]['value']
             arrival_prevailing_condition = departure_wx['metar']['tags'][1]['value']
 
-            #Add to departure score based on the weather at the departure airport Instrumnetation conditions
+            #Add to arrival score based on the weather at the departure airport Instrumnetation conditions
+            #initialize departure score
+            arrival_score = 0
             if arrival_instrumentation_condition == ("IFR"):
                 arrival_score += 15
             else:
                 arrival_score += 5
 
             #Add to departure score based on the weather at the departure airport prevailing conditions
-            if departure_instrumentation_condition == ("Hurricane" or "Tornado" or "Volcanic Ash"):
+            if arrival_prevailing_condition == ("Hurricane" or "Tornado" or "Volcanic Ash"):
                 arrival_score += 50
-            elif departure_instrumentation_condition == ("Ice" or "Thunderstorms" or "Snow" or "Fog" or "Smoke"):
+            elif arrival_prevailing_condition == ("Ice" or "Thunderstorms" or "Snow" or "Fog" or "Smoke"):
                 arrival_score += 30
-            elif departure_instrumentation_condition == ("Patchy Fog" or "Windy" or "Breezy" or "Rain" or "Showers"):
+            elif arrival_prevailing_condition == ("Patchy Fog" or "Windy" or "Breezy" or "Rain" or "Showers"):
                 arrival_score += 10
             else:
                 arrival_score += 0
 
+            # Tally up the scores for the two airports
+            total_score = departure_score + arrival_score
 
+            # Set the range for the likelihood of delay output to the user
+            if total_score <=30:
+                delay = 'Low'
+            elif total_score>30 and total_score<100:
+                delay = 'Medium'
+            else:
+                delay = 'High'
 
-
-
-
-
-
-
-
-
-
-            return render(request, 'fdp/predict.html', {
+            #Return the data to the output form
+            return render(request, 'fdp/predict_output.html', {
             'flightId': flightstatus['flightStatuses'][0]['flightId'],
             'departureAirport': flightstatus['flightStatuses'][0]['departureAirportFsCode'],
             'arrivalAirport': flightstatus['flightStatuses'][0]['arrivalAirportFsCode'],
             'flightNumber': flightstatus['flightStatuses'][0]['flightNumber'],
-
-
-
-                #'api_key': 'AIzaSyCV6c_Aj4-0BdIBmV2M1CCCkGYqWA_aUFk'  # Don't do this! This is just an example. Secure your keys properly.
-    })
+            'arrivalScore': arrival_score,
+            'departureScore': departure_score,
+            'totalScore': total_score,
+            'airline': airline,
+            'arrival_prevailing_condition': arrival_prevailing_condition,
+            'departure_prevailing_condition': departure_prevailing_condition,
+            'delay': delay,
+            })
 
     # if a GET (or any other method) we'll create a blank form
     else:

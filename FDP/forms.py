@@ -9,11 +9,10 @@ AIRLINE_CHOICES = (
     ('B6', 'JetBlue Airlines'),
 )
 
-
+#Input form widgets
 class InputForm(forms.Form):
-    airline = forms.ChoiceField(choices=AIRLINE_CHOICES)
-    flight_number = forms.CharField(label='Flight Number', max_length=10)
-    date_year = forms.CharField(label='Year', max_length=4)
-    date_month = forms.CharField(label='Month', max_length=2)
-    date_day = forms.CharField(label='Day', max_length=2)
-    #date = forms.DateField(widget=forms.SelectDateWidget(),initial=date.today())
+    airline = forms.ChoiceField(label='airline', choices=AIRLINE_CHOICES,widget=forms.Select(attrs={'class': 'form-control'}))
+    flight_number = forms.CharField(label='flight_number', max_length=4, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    date_year = forms.CharField(label='Year', max_length=4,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    date_month = forms.CharField(label='Month', max_length=2,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    date_day = forms.CharField(label='Day', max_length=2,widget=forms.TextInput(attrs={'class': 'form-control'}))

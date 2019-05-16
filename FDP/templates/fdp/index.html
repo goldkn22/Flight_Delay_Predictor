@@ -12,6 +12,7 @@
 
 	{% load static %}
 
+
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
 
@@ -28,6 +29,9 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
+
+
+
 </head>
 
 <body>
@@ -43,25 +47,58 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Airline Name</span>
-										<input class="form-control" type="text" id="airline_name" required>
+<!--										<input class="form-control" type="text" id="airline_name" required>-->
 										        {{ form.airline }}
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<span class="form-label">Flight Number</span>
-										<input class="form-control" type="text" id="flight_number" required>
+<!--										<input class="form-control" type="text" id="flight_number" required>-->
+										{{ form.flight_number }}
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
-										<span class="form-label">Departing</span>
-										<input class="form-control" type="date" required>
+										<span class="form-label">Year</span>
+<!--										<input class="form-control" type="date" required>-->
+										   {{ form.date_year }}
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Month</span>
+<!--										<input class="form-control" type="date" required>-->
+										   {{ form.date_month }}
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Day</span>
+<!--										<input class="form-control" type="date" required>-->
+										   {{ form.date_day }}
 									</div>
 								</div>
 							</div>
+
+
+							<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+  								{{ form.date }}
+  										<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+    							<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+							  </div>
+							</div>
+
+
+
+
+
+
+
+
+
 							<div class="row">
 								</div>
 								<div class="col-md-3">
@@ -76,6 +113,15 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
+
 </body>
+
+
+
+
 
 </html>
