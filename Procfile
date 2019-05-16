@@ -1,1 +1,1 @@
-web: gunicorn Flight_Delay_Predictor.wsgi --log-file -
+web: gunicorn FDP.wsgi --log-file -
