@@ -1,1 +1,1 @@
-web: gunicorn FDP.wsgi --log-file -
+web: gunicorn mysite.wsgi --log-file -
