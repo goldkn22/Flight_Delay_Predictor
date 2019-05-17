@@ -37,6 +37,8 @@ Add additional notes about how to deploy this on a live system
 *  [Heroku CLI] (https://www.jetbrains.com/pycharm/) - Used to build application in Heroku and for error logs
 *  [Colorlib] (https://colorlib.com/etc/bforms/colorlib-booking-5/) - HTML template provider
 *  [Bootstrap] (https://getbootstrap.com/) - CSS and Form design provider
+*  [FlightStats] (https://api.flightstats.com) - Flight Statistics supplier
+
 
 ## Versioning
 
